@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: black;
+        }
+
+        .inicio{
+            top: 5%;
+            left: 40%;
+            width: min(25vw, 250px);
+            height: 30vh;
+            min-height: 200px;
+            position: absolute;
+            border-top-right-radius: 250px;
+            border-top-left-radius: 250px;
+            border-bottom-right-radius: 25%;
+            border-bottom-left-radius: 25%;
+            border: 5px solid rgba(167, 0, 167, 0.053);
+            animation: 2s alternate infinite neonborde, flotar 3.9s ease-in-out infinite;
+            background: 
+            radial-gradient(ellipse at top left, rgba(255, 1, 255, 0.413) 20%, transparent 40%),
+            radial-gradient(ellipse at top right, rgba(255, 0, 255, 0.397) 20%, transparent 40%),
+            radial-gradient(ellipse at top , rgba(255, 0, 255, 0.331) 30%, transparent 60%);
+            background-color: rgba(167, 0, 167, 0.562);
+        }
+
+        .contenedor-degradante{
+            left: 2.5%;
+            top: 1%;
+            width: 95%;
+            height: 100%;
+            position: relative;
+            border-top-right-radius: min(250px, 25vw);
+            border-top-left-radius: min(250px, 25vw);
+            border-bottom-right-radius: 25%;
+            border-bottom-left-radius: 25%;
+            border: none;
+            animation: flotar 3.8s ease-in-out infinite;
+            background: 
+            radial-gradient(ellipse at top left, rgba(255, 1, 255, 0.904) 20%, transparent 40%),
+            radial-gradient(ellipse at top right, rgba(255, 0, 255, 0.71) 20%, transparent 40%),
+            radial-gradient(ellipse at top , rgba(255, 0, 255, 0.555) 10%, transparent 40%);
+            background-color: rgba(167, 0, 167, 0);
+        }
+
+        .particula1{
+            width: min(70px, 10vw);
+            height: 1px;
+            border: 2px solid rgba(167, 0, 167, 0.132);
+            position: absolute;
+            top: 110%;
+            left: 10%;
+            border-radius: 50%;
+            background-color: rgba(167, 0, 167, 0.616);
+            animation: 3s alternate infinite neonborde, flotar 4s ease-in-out infinite;
+        }
+
+        .particula1::before{
+            content: '';
+            width: 70px;
+            height: 1px;
+            border: 2px solid rgba(167, 0, 167, 0.132);
+            position: absolute;
+            top: 15px;
+            left: -10%;
+            border-radius: 50%;
+            background-color: rgba(167, 0, 167, 0.457);
+            animation: 3.5s alternate infinite neonborde;
+        }
+
+        .particula1::after{
+            content: '';
+            width: 70px;
+            height: 1px;
+            border: 2px solid rgba(167, 0, 167, 0.132);
+            position: absolute;
+            top: 30px;
+            left: 0%;
+            border-radius: 50%;
+            background-color: rgba(167, 0, 167, 0.212);
+            animation: 3.9s alternate infinite neonborde;
+        }
+
+        .particula2{
+            width: 70px;
+            height: 1px;
+            border: 2px solid rgba(167, 0, 167, 0.132);
+            position: absolute;
+            top: 110%;
+            left: 40%;
+            border-radius: 50%;
+            background-color: rgba(167, 0, 167, 0.616);
+            animation: 3s alternate infinite neonborde, flotar 4s ease-in-out infinite; 
+        }
+
+        .particula2::before{
+            content: '';
+            width: 70px;
+            height: 1px;
+            border: 2px solid rgba(167, 0, 167, 0.132);
+            position: absolute;
+            top: 15px;
+            left: -10%;
+            border-radius: 50%;
+            background-color: rgba(167, 0, 167, 0.457);
+            animation: 3.5s alternate infinite neonborde;
+        }
+
+        .particula2::after{
+            content: '';
+            width: 70px;
+            height: 1px;
+            border: 2px solid rgba(167, 0, 167, 0.132);
+            position: absolute;
+            top: 30px;
+            left: 0%;
+            border-radius: 50%;
+            background-color: rgba(167, 0, 167, 0.212);
+            animation: 3.9s alternate infinite neonborde;
+        }
+
+        .particula3{
+            width: 70px;
+            height: 1px;
+            border: 2px solid rgba(167, 0, 167, 0.132);
+            position: absolute;
+            top: 110%;
+            left: 70%;
+            border-radius: 50%;
+            background-color: rgba(167, 0, 167, 0.616);
+            animation: 3s alternate infinite neonborde, flotar 4s ease-in-out infinite; 
+        }
+
+        .particula3::before{
+            content: '';
+            width: 70px;
+            height: 1px;
+            border: 2px solid rgba(167, 0, 167, 0.132);
+            position: absolute;
+            top: 15px;
+            left: -10%;
+            border-radius: 50%;
+            background-color: rgba(167, 0, 167, 0.457);
+            animation: 3.5s alternate infinite neonborde;
+        }
+
+        .particula3::after{
+            content: '';
+            width: 70px;
+            height: 1px;
+            border: 2px solid rgba(167, 0, 167, 0.132);
+            position: absolute;
+            top: 30px;
+            left: 0%;
+            border-radius: 50%;
+            background-color: rgba(167, 0, 167, 0.212);
+            animation: 3.9s alternate infinite neonborde;
+        }
+
+        @keyframes neonborde {
+            0%{
+                border-color: rgb(167, 0, 167) ;
+                box-shadow: 0 0 25px rgb(167, 0, 167), 0 0 50px rgb(167, 0, 167) ,  0 0 100px rgb(167, 0, 167) inset;
+            }
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes waveTentacle {
+            0%, 100% { transform: skewX(0deg); }
+            25% { transform: skewX(5deg); }
+            75% { transform: skewX(-5deg); }
+        }
+
+        .linea1{
+            background-color: rgb(167, 0, 167);
+            width: 0%;
+            height: 50%;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            border: 2px solid rgb(167, 0, 167);
+            animation: 1s alternate infinite neonborde;
+        }
+
+        .linea2{
+            background-color: rgb(167, 0, 167);
+            width: 200%;
+            height: 0%;
+            position: absolute;
+            top: 150%;
+            left: -45%;
+            border: 2px solid rgb(167, 0, 167);
+            animation: 1s alternate infinite neonborde;
+        }
+
+        /* Responsive scaling for inline text */
+        @media (max-width: 480px) {
+            .contenedor-degradante1 h3 {
+                font-size: 13px;
+            }
+            .contenedor-degradante1 p {
+                font-size: 11px;
+            }
+        }
+
+        .tentaculo1{
+            border: 2px solid rgb(167, 0, 167);
+            width: 0%;
+            height: 150px;
+            position: relative;
+            top: 0px;
+            left: 0%;
+            background-color: rgb(167, 0, 167);
+            animation: 1s alternate infinite neonborde, waveTentacle 8.8s ease-in-out infinite;
+        }
+
+        .contenedor-texto1, .contenedor-texto2, .contenedor-texto3, .contenedor-texto4, .contenedor-texto5{
+            background-color: transparent;
+            border: 2px solid rgb(167, 0, 167) ;
+            width: 100px;
+            height: 200px;
+            position: relative;
+            top: 100%;
+            left: -50px;
+            animation: 1s alternate infinite neonborde;
+        }
+
+        .contenedor-texto1 h3, .contenedor-texto2 h3, .contenedor-texto3 h3, .contenedor-texto4 h3, .contenedor-texto5 h3{
+            color: white;
+            padding: 2px 2px;
+            margin: 2px 2px;
+            font-size: 13px;
+            animation: 1s alternate infinite neontexto;
+            font-family: cursive;
+        }
+
+        .contenedor-texto1 img, .contenedor-texto2 img, .contenedor-texto3 img, .contenedor-texto4 img, .contenedor-texto5 img{
+            width: 60%; height: 30%;
+            background-size: cover;
+            position: relative; 
+            top: 2%; left: 20%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes neontexto{
+            0%{
+                color: white;
+                text-shadow: 0 0 12px;
+            }
+        }
+
+        .tentaculo2{
+             border: 2px solid rgb(167, 0, 167);
+            width: 0%;
+            height: 150px;
+            position: relative;
+            top: -153px;
+            left: 24%;
+            background-color: rgb(167, 0, 167);
+            animation: 1s alternate infinite neonborde, waveTentacle 3.8s ease-in-out infinite 0.3s;
+        }
+
+
+        .tentaculo3{
+            border: 2px solid rgb(167, 0, 167);
+            width: 0%;
+            height: 150px;
+            position: relative;
+            top: -306px;
+            left: 47.3%;
+            background-color: rgb(167, 0, 167);
+            animation: 1s alternate infinite neonborde, waveTentacle 4.8s ease-in-out infinite 0.6s;
+        }
+
+    .tentaculo4{
+        border: 2px solid rgb(167, 0, 167);
+            width: 0%;
+            height: 150px;
+            position: relative;
+            top: -460px;
+            left: 75%;
+            background-color: rgb(167, 0, 167);
+            animation: 1s alternate infinite neonborde, waveTentacle 3.8s ease-in-out infinite 0.9s;
+        }
+
+        .tentaculo5{
+            border: 2px solid rgb(167, 0, 167);
+            width: 0%;
+            height: 150px;
+            position: relative;
+            top: -613px;
+            left: 100%;
+            background-color: rgb(167, 0, 167);
+            animation: 1s alternate infinite neonborde, waveTentacle 6.8s ease-in-out infinite 1.2s;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-contenido {
+            background: linear-gradient(135deg, rgb(99, 1, 99), rgb(90, 1, 90));
+            border: 2px solid rgb(167, 0, 167);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 0 30px rgb(167, 0, 167), 0 0 60px rgb(167, 0, 167);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-contenido img {
+            width: 70%;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .modal-contenido p {
+            color: white;
+            font-family: cursive;
+            font-size: 14px;
+            line-height: 1.6;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+            margin-bottom: 10px;
+        }
+
+        .modal-contenido h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .modal-contenido h3 {
+            color: white;
+            font-family: cursive;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+        }
+
+        .modal-contenido strong {
+            color: rgba(255, 200, 255, 1);
+        }
+
+        .modal-contenido em {
+            color: rgba(200, 150, 255, 1);
+        }
+
+        .modal-cerrar {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            text-shadow: 0 0 10px rgb(167, 0, 167);
+        }
+
+        .modal-cerrar:hover {
+            color: rgb(255, 0, 255);
+        }
+
+        /* RESPONSIVE - Tablets */
+        @media (max-width: 1024px) {
+            .inicio {
+                width: min(35vw, 300px);
+                height: 28vh;
+                min-height: 180px;
+                left: 35%;
+            }
+
+            .contenedor-texto1, .contenedor-texto2, .contenedor-texto3, .contenedor-texto4, .contenedor-texto5 {
+                width: 90px;
+                height: 180px;
+                left: -45px;
+            }
+
+            .contenedor-texto1 h3, .contenedor-texto2 h3, .contenedor-texto3 h3, .contenedor-texto4 h3, .contenedor-texto5 h3 {
+                font-size: 12px;
+            }
+
+            .tentaculo1, .tentaculo2, .tentaculo3, .tentaculo4, .tentaculo5 {
+                height: 130px;
+            }
+
+            .tentaculo2 { top: -133px; }
+            .tentaculo3 { top: -266px; }
+            .tentaculo4 { top: -399px; }
+            .tentaculo5 { top: -532px; }
+        }
+
+        /* RESPONSIVE - Mobile landscape / small tablets */
+        @media (max-width: 768px) {
+            .inicio {
+                width: min(45vw, 280px);
+                height: 25vh;
+                min-height: 160px;
+                left: 28%;
+            }
+
+            .contenedor-texto1, .contenedor-texto2, .contenedor-texto3, .contenedor-texto4, .contenedor-texto5 {
+                width: 80px;
+                height: 160px;
+                left: -40px;
+            }
+
+            .contenedor-texto1 h3, .contenedor-texto2 h3, .contenedor-texto3 h3, .contenedor-texto4 h3, .contenedor-texto5 h3 {
+                font-size: 11px;
+                padding: 1px;
+                margin: 1px;
+            }
+
+            .contenedor-texto1 img, .contenedor-texto2 img, .contenedor-texto3 img, .contenedor-texto4 img, .contenedor-texto5 img {
+                width: 65%;
+            }
+
+            .tentaculo1, .tentaculo2, .tentaculo3, .tentaculo4, .tentaculo5 {
+                height: 110px;
+            }
+
+            .tentaculo2 { top: -113px; }
+            .tentaculo3 { top: -226px; }
+            .tentaculo4 { top: -339px; }
+            .tentaculo5 { top: -452px; }
+
+            .linea2 {
+                width: 180%;
+                left: -35%;
+            }
+
+            .modal-contenido {
+                padding: 20px;
+                width: 95%;
+            }
+
+            .modal-contenido img {
+                width: 85%;
+                max-height: 200px;
+            }
+
+            .modal-contenido p {
+                font-size: 13px;
+            }
+        }
+
+        /* RESPONSIVE - Mobile portrait */
+        @media (max-width: 480px) {
+            .inicio {
+                width: min(60vw, 240px);
+                height: 22vh;
+                min-height: 140px;
+                top: 3%;
+                left: 20%;
+            }
+
+            .contenedor-degradante {
+                border-top-right-radius: min(200px, 20vw);
+                border-top-left-radius: min(200px, 20vw);
+            }
+
+            .contenedor-texto1, .contenedor-texto2, .contenedor-texto3, .contenedor-texto4, .contenedor-texto5 {
+                width: 70px;
+                height: 140px;
+                left: -35px;
+            }
+
+            .contenedor-texto1 h3, .contenedor-texto2 h3, .contenedor-texto3 h3, .contenedor-texto4 h3, .contenedor-texto5 h3 {
+                font-size: 10px;
+            }
+
+            .contenedor-texto1 img, .contenedor-texto2 img, .contenedor-texto3 img, .contenedor-texto4 img, .contenedor-texto5 img {
+                width: 70%;
+                height: 25%;
+            }
+
+            .tentaculo1, .tentaculo2, .tentaculo3, .tentaculo4, .tentaculo5 {
+                height: 90px;
+            }
+
+            .tentaculo2 { top: -93px; }
+            .tentaculo3 { top: -186px; }
+            .tentaculo4 { top: -279px; }
+            .tentaculo5 { top: -372px; }
+
+            .linea2 {
+                width: 160%;
+                left: -25%;
+            }
+
+            .particula1, .particula2, .particula3 {
+                width: min(80px, 8vw);
+            }
+
+            .contenedor-degradante1 h3 {
+                font-size: 14px !important;
+                top: -80px !important;
+                left: 10% !important;
+            }
+
+            .contenedor-degradante1 p {
+                font-size: 12px !important;
+                top: -15px !important;
+                left: -10% !important;
+            }
+
+            .modal-contenido {
+                padding: 15px;
+                max-height: 85vh;
+            }
+
+            .modal-contenido img {
+                width: 90%;
+                max-height: 150px;
+            }
+
+            .modal-contenido h2 {
+                font-size: 18px;
+            }
+
+            .modal-contenido p {
+                font-size: 12px;
+                line-height: 1.5;
+            }
+
+            .modal-contenido h3 {
+                font-size: 14px;
+            }
+
+            .modal-cerrar {
+                font-size: 24px;
+                top: 5px;
+                right: 10px;
+            }
+        }
+
+        /* RESPONSIVE - Very small screens */
+        @media (max-width: 360px) {
+            .inicio {
+                width: min(70vw, 220px);
+                height: 20vh;
+                min-height: 120px;
+                left: 15%;
+            }
+
+            .contenedor-texto1, .contenedor-texto2, .contenedor-texto3, .contenedor-texto4, .contenedor-texto5 {
+                width: 60px;
+                height: 120px;
+                left: -30px;
+            }
+
+            .contenedor-texto1 h3, .contenedor-texto2 h3, .contenedor-texto3 h3, .contenedor-texto4 h3, .contenedor-texto5 h3 {
+                font-size: 9px;
+            }
+
+            .tentaculo1, .tentaculo2, .tentaculo3, .tentaculo4, .tentaculo5 {
+                height: 75px;
+            }
+
+            .tentaculo2 { top: -78px; }
+            .tentaculo3 { top: -156px; }
+            .tentaculo4 { top: -234px; }
+            .tentaculo5 { top: -312px; }
+
+            .contenedor-degradante1 h3 {
+                font-size: 12px !important;
+                top: -65px !important;
+            }
+        }
+
+    </style>
+
+    <div class="inicio">
+        <div class="contenedor-degradante"></div>
+        <div class="contenedor-degradante1">
+            <h3 style="color: white; position: relative; top: -100px; left: 30%; font-family:cursive; animation: flotar 3.8s ease-in-out infinite;">Septimo habito
+            <br>
+            <p style="text-align: center; position: relative; top: -20px; left: -30%;"> "Afilar la sierra"</p>
+        </h3>
+        </div>
+        <div class="particula1"></div>
+        <div class="particula2"></div>
+        <div class="particula3"></div>
+        <div class="particula4"></div>
+        
+        <div class="linea1"></div>
+        <div class="linea2">
+            <div class="tentaculo1">
+                <div class="contenedor-texto1">
+                    <img src="definicion-1.jpg" alt="imagen" usemap="#map1" width="400" height="379">
+                    <map name="map1">
+                        <area shape="rect" coords="0,0,400,379" href="#" onclick="mostrarInfo(1); return false;" alt="Ver información">
+                    </map>
+                    <h3>Definición</h3>
+                </div>
+            </div>
+            <div class="tentaculo2">
+                <div class="contenedor-texto2">
+                    <img src="dimension-fisica.jpg" alt="imagen" usemap="#map2" width="400" height="379">
+                    <map name="map2">
+                        <area shape="rect" coords="0,0,400,379" href="#" onclick="mostrarInfo(2); return false;" alt="Ver información">
+                    </map>
+                    <h3>Dimensión Física</h3>
+                </div>
+            </div>
+            <div class="tentaculo3">
+                <div class="contenedor-texto3">
+                    <img src="dimension-espiritual.jpg" alt="imagen" usemap="#map3" width="400" height="379">
+                    <map name="map3">
+                        <area shape="rect" coords="0,0,400,379" href="#" onclick="mostrarInfo(3); return false;" alt="Ver información">
+                    </map>
+                    <h3>Dimensión Espiritual</h3>
+                </div>
+            </div>
+            <div class="tentaculo4">
+                <div class="contenedor-texto4">
+                    <img src="dimension-mental.jpg" alt="imagen" usemap="#map4" width="400" height="379">
+                    <map name="map4">
+                        <area shape="rect" coords="0,0,400,379" href="#" onclick="mostrarInfo(4); return false;" alt="Ver información">
+                    </map>
+                    <h3>Dimensión Mental</h3>
+                </div>
+            </div>
+            <div class="tentaculo5">
+                <div class="contenedor-texto5">
+                    <img src="dimension-social.jpg" alt="imagen" usemap="#map5" width="400" height="379">
+                    <map name="map5">
+                        <area shape="rect" coords="0,0,400,379" href="#" onclick="mostrarInfo(5); return false;" alt="Ver información">
+                    </map>
+                    <h3>Dimensión Social</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal1" class="modal-overlay">
+        <div class="modal-contenido">
+            <button class="modal-cerrar" onclick="cerrarModal(1)">&times;</button>
+            <h2 style="color: white; font-family: cursive; text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);">Definición</h2>
+            <p>Significa preservar y realizar el mayor bien que usted posee: usted mismo. Es el proceso de renovar las cuatro dimensiones de nuestra naturaleza. Es <strong>CP (Capacidad de Producción)</strong> personal y es el que hace posibles a los otros siete hábitos.</p>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal-overlay">
+        <div class="modal-contenido">
+            <button class="modal-cerrar" onclick="cerrarModal(2)">&times;</button>
+            <h2 style="color: white; font-family: cursive; text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);">Dimensión Física</h2>
+            <p><strong>En qué consiste:</strong> Cuidar efectivamente nuestro cuerpo físico (comer el tipo correcto de alimentos, descansar lo suficiente y hacer ejercicio con regularidad).</p>
+            <p><strong>Partes esenciales:</strong></p>
+            <p><em>Resistencia:</em> Se obtiene con ejercicios aeróbicos (eficiencia cardiovascular / capacidad del corazón para bombear sangre).</p>
+            <p><em>Flexibilidad:</em> Se logra mediante ejercicios de estiramiento (distiende, calienta y elimina el ácido láctico).</p>
+            <p><em>Fuerza:</em> Se consigue con ejercicios de tensión muscular (flexiones, abdominales, levantar pesas) y calistenia simple.</p>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal-overlay">
+        <div class="modal-contenido">
+            <button class="modal-cerrar" onclick="cerrarModal(3)">&times;</button>
+            <h2 style="color: white; font-family: cursive; text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);">Dimensión Espiritual</h2>
+            <p><strong>En qué consiste:</strong> Nuestro núcleo, centro y compromiso con nuestro sistema de valores. Proporciona liderazgo a nuestra propia vida.</p>
+            <p><strong>Partes esenciales:</strong></p>
+            <p>• Beber en las fuentes que nos inspiran y elevan.</p>
+            <p>• Conexión con las verdades intemporales de la humanidad (lectura, meditación, estudio o reflexión sobre las escrituras/valores).</p>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal-overlay">
+        <div class="modal-contenido">
+            <button class="modal-cerrar" onclick="cerrarModal(4)">&times;</button>
+            <h2 style="color: white; font-family: cursive; text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);">Dimensión Mental</h2>
+            <p><strong>En qué consiste:</strong> Nuestro desarrollo mental y disciplina para el estudio (educación formal y continua).</p>
+            <p><strong>Partes esenciales:</strong></p>
+            <p>• Mantener el hábito de la lectura seria y profunda.</p>
+            <p>• Explorar nuevos temas, pensar analíticamente y escribir con sentido (evitando que la mente se atrofie por la falta de ejercicio intelectual).</p>
+        </div>
+    </div>
+
+    <div id="modal5" class="modal-overlay">
+        <div class="modal-contenido">
+            <button class="modal-cerrar" onclick="cerrarModal(5)">&times;</button>
+            <h2 style="color: white; font-family: cursive; text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);">Dimensión Social / Emocional</h2>
+            <p><strong>En qué consiste:</strong> Enfoca los hábitos cuarto, quinto y sexto (principios de liderazgo interpersonal, comunicación empática y cooperación creativa).</p>
+            <p><strong>Partes esenciales:</strong></p>
+            <p>• Se manifiesta a través de nuestras relaciones cotidianas con los demás.</p>
+            <p>• Requiere práctica y servicio, empatía, sinergia y seguridad intrínseca.</p>
+            <hr style="border-color: rgba(167, 0, 167, 0.5); margin: 15px 0;">
+            <h3 style="color: white; font-family: cursive; text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);">Conceptos Clave</h3>
+            <p><strong>Roles de la Vida (George Sheehan):</strong></p>
+            <p>Físico (un buen animal) | Mental (un buen artesano) | Social (un buen amigo) | Espiritual (un santo)</p>
+            <p><strong>El equilibrio y la sinergia:</strong> La autorrenovación debe ser equilibrada en las cuatro dimensiones. El descuido de una afecta negativamente a las demás.</p>
+            <p><strong>La espiral ascendente:</strong> El proceso de crecimiento, aprendizaje y cambio continuo (aprender, comprometerse, actuar; y volver a aprender en planos cada vez más altos).</p>
+        </div>
+    </div>
+
+    <script>
+        function mostrarInfo(num) {
+            document.getElementById('modal' + num).classList.add('active');
+        }
+
+        function cerrarModal(num) {
+            document.getElementById('modal' + num).classList.remove('active');
+        }
+
+        for (let i = 1; i <= 5; i++) {
+            document.getElementById('modal' + i).addEventListener('click', function(e) {
+                if (e.target === this) {
+                    cerrarModal(i);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
